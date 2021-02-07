@@ -53,6 +53,7 @@ flutter:
   assets:
     - images/images/
     - images/images/cats/
+    - images/images/products/
     # - images/images/cats/tshirt.png
     # - images/images/m2.jpg
     # - images/images/w1.jpeg
