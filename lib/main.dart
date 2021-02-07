@@ -160,7 +160,7 @@ class _HomePageState extends State<HomePage> {
           //Image Carousel
           image_carousel,
           //Padding
-          Padding(padding: const EdgeInsets.all(10.0),
+          Padding(padding: const EdgeInsets.all(20.0),
           child: Text('Categories'),),
 
           //Horizontal List View begins here

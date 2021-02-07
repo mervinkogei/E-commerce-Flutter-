@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:shop_ecommerce/pages/products_details.dart';
 
 class Products extends StatefulWidget {
   @override
@@ -52,22 +53,41 @@ class Single_prod extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
-      child: Hero(tag: prod_name, 
-      child: Material(
-        child: InkWell(onTap: (){},
-        child: GridTile(
-          footer: Container(
-            color: Colors.white70,
-            child: ListTile(
-              leading: Text(prod_name, style: TextStyle(fontWeight: FontWeight.bold),),
-              title: Text("\$$prod_price", style: TextStyle(color: Colors.redAccent, fontWeight: FontWeight.w800),),
-                subtitle: Text(
-                "\$$prod_old_price", style: TextStyle(color: Colors.black54, fontWeight: FontWeight.w800, decoration: TextDecoration.lineThrough),),
+      child: Hero(
+          tag: prod_name,
+          child: Material(
+            child: InkWell(
+              onTap: () => Navigator.of(context).push(
+                  MaterialPageRoute(builder: (context) => ProductDetails())),
+              child: GridTile(
+                  footer: Container(
+                    color: Colors.white70,
+                    child: ListTile(
+                      leading: Text(
+                        prod_name,
+                        style: TextStyle(fontWeight: FontWeight.bold),
+                      ),
+                      title: Text(
+                        "\$$prod_price",
+                        style: TextStyle(
+                            color: Colors.redAccent,
+                            fontWeight: FontWeight.w800),
+                      ),
+                      subtitle: Text(
+                        "\$$prod_old_price",
+                        style: TextStyle(
+                            color: Colors.black54,
+                            fontWeight: FontWeight.w800,
+                            decoration: TextDecoration.lineThrough),
+                      ),
+                    ),
+                  ),
+                  child: Image.asset(
+                    product_picture,
+                    fit: BoxFit.cover,
+                  )),
             ),
-          ),
-          child: Image.asset(product_picture, fit: BoxFit.cover,)),
-        ),)),
+          )),
     );
-    
   }
 }
