@@ -20,6 +20,30 @@ class _ProductsState extends State<Products> {
       "old_price": 1500,
       "price": 800,
     },
+    {
+      "name": "Heels Shoe",
+      "picture": "images/images/products/hills1.jpeg",
+      "old_price": 1200,
+      "price": 1000,
+    },
+    {
+      "name": "Jeans",
+      "picture": "images/images/products/pants1.jpg",
+      "old_price": 1300,
+      "price": 900,
+    },
+    {
+      "name": "Skirt",
+      "picture": "images/images/products/skt1.jpeg",
+      "old_price": 800,
+      "price": 500,
+    },
+    {
+      "name": "Ladies Blazzer",
+      "picture": "images/images/products/blazer2.jpeg",
+      "old_price": 2500,
+      "price": 1800,
+    }
   ];
   @override
   Widget build(BuildContext context) {
@@ -57,36 +81,22 @@ class Single_prod extends StatelessWidget {
           tag: prod_name,
           child: Material(
             child: InkWell(
-              onTap: () => Navigator.of(context).push(
-                  MaterialPageRoute(builder: (context) => ProductDetails(
-
-                    //Passing the values of the product
-                    product_details_name: prod_name,
-                    product_details_new_price: prod_price,
-                    product_details_old_price: prod_old_price,
-                    product_details_picture: product_picture,
-                  ))),
+              onTap: () => Navigator.of(context).push(MaterialPageRoute(
+                  builder: (context) => ProductDetails(
+                        //Passing the values of the product
+                        product_details_name: prod_name,
+                        product_details_new_price: prod_price,
+                        product_details_old_price: prod_old_price,
+                        product_details_picture: product_picture,
+                      ))),
               child: GridTile(
                   footer: Container(
-                    color: Colors.white70,
-                    child: ListTile(
-                      leading: Text(
-                        prod_name,
-                        style: TextStyle(fontWeight: FontWeight.bold),
-                      ),
-                      title: Text(
-                        "\Ksh$prod_price",
-                        style: TextStyle(
-                            color: Colors.redAccent,
-                            fontWeight: FontWeight.w800),
-                      ),
-                      subtitle: Text(
-                        "\Ksh$prod_old_price",
-                        style: TextStyle(
-                            color: Colors.black54,
-                            fontWeight: FontWeight.w800,
-                            decoration: TextDecoration.lineThrough),
-                      ),
+                    color: Colors.white,
+                    child: Row(
+                      children: [
+                        Expanded(child: Text(prod_name, style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16.0),)),
+                        Text("\Ksh$prod_price", style: TextStyle(color: Colors.redAccent, fontWeight: FontWeight.bold),)
+                      ],
                     ),
                   ),
                   child: Image.asset(

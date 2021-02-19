@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:carousel_pro/carousel_pro.dart';
 import 'components/products.dart';
+import 'package:shop_ecommerce/pages/cart.dart';
 
 //Import files
 import 'package:shop_ecommerce/components/horizontal_listview.dart';
@@ -20,7 +21,7 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
-  Widget image_carousel = Container(
+    Widget image_carousel = Container(
       height: 200.0,
       child: Carousel(
         boxFit: BoxFit.cover,
@@ -36,6 +37,7 @@ class _HomePageState extends State<HomePage> {
         animationCurve: Curves.fastOutSlowIn,
         animationDuration: Duration(microseconds: 1000),
         dotSize: 4.0,
+        dotBgColor: Colors.transparent,
         indicatorBgPadding: 4.0,
       ),
     );
@@ -57,7 +59,10 @@ class _HomePageState extends State<HomePage> {
                 Icons.shopping_cart,
                 color: Colors.white,
               ),
-              onPressed: () {})
+              onPressed: () {
+                Navigator.push(
+                    context, MaterialPageRoute(builder: (context) => Cart()));
+              })
         ],
       ),
       drawer: Drawer(
@@ -111,11 +116,14 @@ class _HomePageState extends State<HomePage> {
             ),
 
             InkWell(
-              onTap: () {},
+              onTap: () {
+                Navigator.push(
+                    context, MaterialPageRoute(builder: (context) => Cart()));
+              },
               child: ListTile(
-                title: Text('Categories'),
+                title: Text('Shopping Cart'),
                 leading: Icon(
-                  Icons.dashboard,
+                  Icons.shopping_cart,
                   color: Colors.redAccent,
                 ),
               ),
@@ -156,27 +164,34 @@ class _HomePageState extends State<HomePage> {
         ),
       ),
       body: ListView(
-        children: <Widget> [
+        children: <Widget>[
           //Image Carousel
           image_carousel,
           //Padding
-          Padding(padding: const EdgeInsets.all(20.0),
-          child: Text('Categories'),),
+          Padding(
+            padding: const EdgeInsets.all(20.0),
+            child: Text('Categories',
+                style: TextStyle(fontWeight: FontWeight.bold)),
+          ),
 
           //Horizontal List View begins here
           HorizontalList(),
 
-          Padding(padding: const EdgeInsets.all(20.0),
-          child: Text('Recent Products'),),
+          Padding(
+            padding: const EdgeInsets.all(20.0),
+            child: Text(
+              'Recent Products',
+              style: TextStyle(fontWeight: FontWeight.bold),
+            ),
+          ),
 
           //Grid View
           Container(
             height: 320.0,
             child: Products(),
           ),
-
         ],
-        ),
+      ),
     );
   }
 }
