@@ -69,31 +69,58 @@ class Single_cart_product extends StatelessWidget {
   Widget build(BuildContext context) {
     return Card(
       child: ListTile(
+        leading: Image.asset(cart_product_picture,
+        height: 80.0,
+        width: 80.0,),
         title: Text(cart_prod_name),
         subtitle: Column(
           children: [
             Row(
               children: [
-                 Padding(
-                   padding: const EdgeInsets.all(8.0),
-                   child: Text("Size:"),
-                 ),
-                 Padding(
-                   padding: const EdgeInsets.all(8.0),
-                   child: Text(cart_product_size),
-                 ),
-
-                   Padding(
-                   padding: const EdgeInsets.all(8.0),
-                   child: Text("Color:"),
-                 ),
-                 Padding(
-                   padding: const EdgeInsets.all(8.0),
-                   child: Text(cart_product_color),
-                 ),
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Text(
+                    "Size:",
+                    style: TextStyle(fontWeight: FontWeight.bold),
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.all(6.0),
+                  child: Text(
+                    cart_product_size,
+                    style: TextStyle(color: Colors.redAccent),
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.fromLTRB(20.0, 8.0, 8.0, 8.0),
+                  child: Text(
+                    "Color:",
+                    style: TextStyle(fontWeight: FontWeight.bold),
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.all(6.0),
+                  child: Text(
+                    cart_product_color,
+                    style: TextStyle(color: Colors.redAccent),
+                  ),
+                ),
               ],
+            ),
+            Container(
+              alignment: Alignment.to,
+              child: Text("\Ksh $cart_product_price", 
+              style: TextStyle(fontSize: 16.0, fontWeight: FontWeight.bold,
+              color: Colors.redAccent ),),
             )
-        ],),
+          ],
+        ),
+          trailing: Column(
+          children: <Widget> [
+            IconButton(icon: Icon(Icons.arrow_drop_up), onPressed: (){}),
+            IconButton(icon: Icon(Icons.arrow_drop_down), onPressed: (){}),
+          ],
+        ),
       ),
     );
   }
